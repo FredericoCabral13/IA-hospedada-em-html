@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Flores</title>
+</head>
+<h1 style="color:red;"><u>Previsão de Flores</u></h1>
+
+<strong> <p>Selecione uma imagem de uma dessas flores: </p> </strong>
+<p><i>Margarida, dente-de-leão, rosa, girassol ou tulipa.</i></p>
+<body>
+
+<form action = "http://127.0.0.1:5000/previsao" method = "POST" enctype="multipart/form-data">
+<input style="color:gray;" type="file" name="files" id="n_flor" />
+<input style="color:blue;" type="submit" />
+
+<p> </p>
+<div id="view_photo"><img id='output' style="height:200px; width=200px"></div>
+
+<!--[Script]-->
+<script>
+var files = document.querySelector('input[name="files"]');
+
+files.addEventListener("change", function(file){
+	var input = file.target;
+	
+	var reader = new FileReader();
+    
+	reader.onload = function(){
+      var dataURL = reader.result;
+      var output = document.getElementById('output');
+      output.src = dataURL;
+    };
+
+    reader.readAsDataURL(input.files[0]);
+});
+
+
+</script>
+
+      </form>
+   </body>
+</html>
