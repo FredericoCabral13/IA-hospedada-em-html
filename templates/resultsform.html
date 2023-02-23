@@ -2,6 +2,9 @@
 <html>
  <head>
  <title>Tipo da Flor</title>
+
+ <strong><p><a href="{{ url_for('mostrar_pred_flor_estoque')}}">Previsão de Flores</a></p></strong>
+
  </head>
  <body>
  <h3></h3>
@@ -9,6 +12,7 @@
  
  <div>Previsão: <strong>{{ pred_flor }}</strong></div>
  </div>
+<a href="{{ url_for('results')}}"><img src="https://thumbs.gfycat.com/ChubbyUnluckyAllosaurus-size_restricted.gif" style="position:fixed; right:720px; bottom:220px; width:200px; height:300px; border:none;"></a>
  </div>
  </body>
 </html>
