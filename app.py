@@ -3,6 +3,10 @@ import pickle
 import numpy as np
 import cv2 as cv
 
+#Função que carrega o modelo
+with open('/home/frederico/Downloads/modelo_flores.pkl', 'rb') as f:
+    model = pickle.load(f)
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,9 +16,6 @@ def mostrar_pred_flor_estoque():
 def results():
     form = request.form
     if request.method == 'POST':
-       #Função que carrega o modelo
-       with open('/home/frederico/Downloads/modelo_flores.pkl', 'rb') as f:
-           model = pickle.load(f)
        N_flor = request.files['files']
        N_flor_bytes = np.fromfile(N_flor, np.uint8)
        N_flor = cv.imdecode(N_flor_bytes, cv.IMREAD_COLOR)
@@ -35,3 +36,7 @@ def results():
        elif (pred == 4):
          pred = 'Tulipa'
        return render_template('resultsform.html', Nova_flor=Nova_flor, pred_flor=pred)
+
+@app.route('/sobre')
+def sobre():
+    return render_template('sobre.html')
